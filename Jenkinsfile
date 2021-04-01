@@ -11,20 +11,18 @@ node {
   }
   // you should add a test report here
   withMaven (maven: 'maven3') {
-  sh "mvn package"
+    sh "mvn package"
   }
   // collect test results
-   agent any
-    stages {
-        stage('Test') {
-            steps {
-                sh './gradlew check'
-            }
-        }
+  stage('Test') {
+    steps {
+       sh './gradlew check'
+     }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+      junit 'build/reports/**/*.xml'
     }
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
-    }
+  }
 }
