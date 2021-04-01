@@ -22,7 +22,10 @@ pipelineJob('build-pipeline-job') {
           scriptPath('Jenkinsfile') // The location of the Jenkinsfile that defines the pipeline job within the repo
           extensions { }  // required as otherwise it may try to tag the repo, which you may not want 
         } 
-      } 
+      }
+      steps {
+        maven('-e clean test')
+      }
     } 
   }
 }
