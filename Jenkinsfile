@@ -10,4 +10,7 @@ node {
     echo "hello"
   }
   // you should add a test report here
+  withMaven (maven: 'maven3') {
+  sh "mvn package"
+  }
 }
