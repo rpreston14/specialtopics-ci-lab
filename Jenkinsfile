@@ -6,11 +6,11 @@ pipeline{
             git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
         }
       }
-      stage('Build') {
-        steps {
-           sh './gradlew build'
-        }
-      }
+//       stage('Build') {
+//         steps {
+//            sh './gradlew build'
+//         }
+//       }
       // collect test results
       stage('Test') {
         steps {
