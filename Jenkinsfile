@@ -1,5 +1,4 @@
 pipeline{
-node {
   stage('checkout sources') {
         // You should change this to be the appropriate thing
         git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
@@ -29,5 +28,4 @@ node {
       junit 'build/reports/**/*.xml'
     }
   }
-}
 }
