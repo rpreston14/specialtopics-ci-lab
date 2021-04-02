@@ -11,13 +11,13 @@ pipeline{
            sh './gradlew build'
         }
       }
-      // you should add a test report here
-      withMaven (maven: 'maven3') {
-        sh "mvn package"
-      }
       // collect test results
       stage('Test') {
         steps {
+          // you should add a test report here
+          withMaven (maven: 'maven3') {
+            sh "mvn package"
+          }
            sh './gradlew check'
          }
       }
