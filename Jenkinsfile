@@ -1,13 +1,25 @@
-
-node {
-  stage('checkout sources') {
-        // You should change this to be the appropriate thing
-        git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
+pipeline{
+  agent any
+  stages{
+      stage('checkout sources') {
+        steps{
+            git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
+        }
+      }
+      // collect test results
+      stage('Test') {
+        steps {
+          // you should add a test report here
+          withMaven (maven: 'maven3') {
+            sh "mvn package"
+          }
+         }
+      }
   }
-
-  stage('Build') {
-    // you should build this repo with a maven build step here
-    echo "hello"
+  post {
+    always {
+      archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+      junit '**/*.xml'
+    }
   }
-  // you should add a test report here
 }
