@@ -1,10 +1,10 @@
 pipeline{
-  stage('checkout sources') {
-        // You should change this to be the appropriate thing
-        git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
-  }
   agent any
   stages{
+      stage('checkout sources') {
+            // You should change this to be the appropriate thing
+            git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
+      }
       stage('Build') {
         // you should build this repo with a maven build step here
         steps {
