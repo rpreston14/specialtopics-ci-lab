@@ -1,4 +1,4 @@
-
+pipeline{
 node {
   stage('checkout sources') {
         // You should change this to be the appropriate thing
@@ -30,3 +30,4 @@ node {
     }
   }
 }
+)
