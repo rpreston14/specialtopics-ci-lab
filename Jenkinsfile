@@ -2,11 +2,11 @@ pipeline{
   agent any
   stages{
       stage('checkout sources') {
-            // You should change this to be the appropriate thing
+        steps{
             git url: 'https://github.com/rpreston14/specialtopics-ci-lab'
+        }
       }
       stage('Build') {
-        // you should build this repo with a maven build step here
         steps {
            sh './gradlew build'
         }
